@@ -20,7 +20,8 @@ ChatBot::ChatBot()
 // constructor WITH memory allocation
 ChatBot::ChatBot(std::string filename)
 {
-    std::cout << "ChatBot Constructor (instance: " << this << ")" << std::endl;
+    std::cout << "ChatBot Constructor" << std::endl;
+    // std::cout << "ChatBot Constructor (instance: " << this << ")" << std::endl;
 
     // invalidate data handles
     _chatLogic = nullptr;
@@ -32,12 +33,12 @@ ChatBot::ChatBot(std::string filename)
 
 ChatBot::~ChatBot()
 {
-    std::cout << "ChatBot Destructor (instance: " << this << ")" << std::endl;
+    std::cout << "ChatBot Destructor" << std::endl;
+    // std::cout << "ChatBot Destructor (instance: " << this << ")" << std::endl;
 
     // deallocate heap memory
     if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
-        std::cout << "ChatBot delete _image" << std::endl;
         delete _image;
         _image = NULL;
     }
@@ -48,7 +49,8 @@ ChatBot::~ChatBot()
 // Copy c'tor
 ChatBot::ChatBot(const ChatBot &source)
 {
-    std::cout << "ChatBot Copy c'tor from " << &source << " to instance " << this << std::endl;
+    // std::cout << "ChatBot Copy c'tor from " << &source << " to instance " << this << std::endl;
+    std::cout << "ChatBot Copy constructor" << std::endl;
     _image = new wxBitmap(*source._image);
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
@@ -72,7 +74,8 @@ ChatBot &ChatBot::operator=(const ChatBot &source)
 // Move c'tor
 ChatBot::ChatBot(ChatBot &&source)
 {
-    std::cout << "ChatBot Move c'tor from " << &source << " to instance " << this << std::endl;
+    // std::cout << "ChatBot Move c'tor from " << &source << " to instance " << this << std::endl;
+    std::cout << "ChatBot Move constructor"<< std::endl;
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
     _image = source._image;
@@ -84,7 +87,8 @@ ChatBot::ChatBot(ChatBot &&source)
 // Move assignment operator
 ChatBot &ChatBot::operator=(ChatBot &&source)
 {
-    std::cout << "ChatBot Move assignment operator from " << &source << " to instance " << this << std::endl;
+    // std::cout << "ChatBot Move assignment operator from " << &source << " to instance " << this << std::endl;
+    std::cout << "ChatBot Move Assignment operator" << std::endl;
     if (this == &source)
     {
         return *this;
